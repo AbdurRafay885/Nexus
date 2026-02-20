@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 import { 
   Home, Building2, CircleDollarSign, Users, MessageCircle, 
-  Bell, FileText, Settings, HelpCircle
+  Bell, FileText, Settings, HelpCircle, Calendar // Added Calendar icon
 } from 'lucide-react';
 
 interface SidebarItemProps {
@@ -56,7 +56,6 @@ export const Sidebar: React.FC = () => {
   
   const sidebarItems = user.role === 'entrepreneur' ? entrepreneurItems : investorItems;
   
-  // Common items at the bottom
   const commonItems = [
     { to: '/settings', icon: <Settings size={20} />, text: 'Settings' },
     { to: '/help', icon: <HelpCircle size={20} />, text: 'Help & Support' },

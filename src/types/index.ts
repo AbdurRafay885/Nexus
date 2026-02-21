@@ -94,3 +94,52 @@ export interface AvailabilitySlot {
   start: string;
   end: string;
 }
+
+export interface CallSession {
+  id: string;
+  participants: string[];
+  startTime: string;
+  endTime?: string;
+  status: 'connecting' | 'active' | 'ended';
+  isScreenSharing: boolean;
+}
+
+export type DocumentStatus = 'Draft' | 'In Review' | 'Signed';
+
+export interface DealDocument extends Document {
+  status: DocumentStatus;
+  version: number;
+  signedAt?: string;
+  signatureUrl?: string; // For the e-signature mockup
+  requiresActionFrom: UserRole;
+}
+
+export type TransactionType = 'Investment' | 'Deposit' | 'Withdrawal' | 'Transfer';
+export type TransactionStatus = 'Completed' | 'Pending' | 'Failed';
+
+export interface Transaction {
+  id: string;
+  senderId: string;
+  senderName: string;
+  receiverId: string;
+  receiverName: string;
+  amount: number;
+  currency: string;
+  type: TransactionType;
+  status: TransactionStatus;
+  timestamp: string;
+  reference?: string;
+}
+
+export interface Wallet {
+  userId: string;
+  balance: number;
+  currency: string;
+  lastUpdated: string;
+}
+
+export interface AuthSecurity {
+  is2FAEnabled: boolean;
+  lastLogin: string;
+  passwordStrength: 'Weak' | 'Medium' | 'Strong';
+}
